@@ -50,14 +50,14 @@ app.use(
 // Middleware flash messages
 app.use(flash());
 
-//create the connection to database
+//buat koneksi ke database
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   database: "tb_pweb_a",
 });
 
-//database connection
+// koneksi database 
 db.connect((err) => {
   if (err) throw err;
   console.log("database connected..");
@@ -84,7 +84,7 @@ app.get("/register", function (req, res) {
 app.post("/register", function (req, res) {
   const { username, email, password, confirm_password } = req.body;
 
-  // check if username already exists
+  // cek jika username sudah ada
   const sqlCheck = "SELECT * FROM users WHERE username = ?";
   db.query(sqlCheck, username, (err, result) => {
     if (err) throw err;
@@ -105,7 +105,7 @@ app.post("/register", function (req, res) {
     bcrypt.hash(password, saltRounds, function (err, hash) {
       if (err) throw err;
 
-      // insert user to database
+      // insert user ke database
       const sqlInsert =
         "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
       const values = [username, email, hash];
@@ -118,7 +118,7 @@ app.post("/register", function (req, res) {
   });
 });
 
-// login page
+// get login page
 app.get("/login", function (req, res) {
   const errorMessage = req.session.errorMessage;
   req.session.errorMessage = "";
@@ -132,6 +132,7 @@ app.get("/login", function (req, res) {
   });
 });
 
+// post login
 app.post("/login", function (req, res) {
   const { username, password } = req.body;
 
@@ -175,7 +176,7 @@ app.post("/login", function (req, res) {
   });
 });
 
-// logout
+// get logout
 app.get("/logout", function (req, res) {
   res.clearCookie("token");
   res.redirect("/login");
@@ -348,7 +349,7 @@ app.get("/download/:user_id/:form_id", requireAuth, (req, res) => {
   });
 });
 
-// Create multer storage configuration
+// Create multer konfigurasi storage 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
@@ -366,7 +367,7 @@ const storage = multer.diskStorage({
   },
 });
 
-// Create multer upload configuration
+// Create multer konfigurasi upload 
 const upload = multer({ storage: storage });
 
 // Handle file upload
@@ -385,7 +386,7 @@ app.post("/upload", upload.single("uploaded_file"), requireAuth, (req, res) => {
       throw err;
     }
 
-    // Insert data to MySQL
+    // Insert data ke MySQL
     const insertSql =
       "INSERT INTO submissions (user_id, form_id, uploaded_file, description) VALUES (?, ?, ?, ?)";
     const insertValues = [user_id, form_id, uploaded_file, description];
