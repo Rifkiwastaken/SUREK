@@ -1,0 +1,120 @@
+
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family:'montserrat';
+  }
+  .container-wrapper{
+    padding-bottom:300px;
+  }
+  
+  .profil-wrapper{
+    width:100%;
+    display: flex;
+    flex-direction: column; 
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 2px -2px, rgba(0, 0, 0, 0.3) 0px 2px 2px -2px;
+    padding:20px;
+    padding-top:50px;
+    border-radius:5px;
+  }
+  
+  .item{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .item-1 p{
+    margin:0;
+  }
+  
+  .item-1 img{
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+    filter: drop-shadow(0px 0px 10px #44c6dd);
+  }
+  
+  .item-1 .profil-name{
+    font-size:18px;
+    font-weight:600;
+    color:#525252;
+  }
+  
+  .item-1 .profil-nim{
+    font-size:14px;
+    font-weight:400;
+    color:#8b8a8a;
+  }
+  
+  .item-2{
+    display:flex;
+    flex-direction:column;
+    padding:30px;
+    justify-content: start;
+    align-items: start;
+  }
+  
+  .item-2 .title{
+    width:100%;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    gap:20px;
+    padding:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+    margin-bottom:25px;
+  }
+  
+  .item-2 .title .icon{
+    color:#2b7b89;
+    font-size:20px;
+  }
+  
+  .item-2 .title .sub-title{
+    color:#525252;
+    font-weight:500;
+    font-size:20px;
+  }
+  
+  .item-2 .personal-info{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content:start;
+    padding:5px;
+  }
+  
+  .item-2 .personal-info .ques,
+  .item-2 .personal-info .answ{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+  }
+  
+  .item-2 .personal-info .ques{
+    font-weight:bold;
+    color:rgb(98, 98, 98);
+  }
+  
+  .item-2 .personal-info .answ{
+    color:#a2a2a2;
+  }
+  
+  @media (max-width:939px){
+    .container-wrapper{
+      flex-direction: column;
+    }
+    .item-2 .personal-info{
+      flex-direction: column;
+      padding:5px;
+    }
+  }
