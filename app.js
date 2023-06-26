@@ -427,7 +427,7 @@ app.post("/edit-profil", upload.single("avatar"), requireAuth, (req, res) => {
   const avatar = req.file.filename;
 
   // Insert data ke MySQL
-  const updateUserSql = "UPDATE users SET avatar = ? WHERE user_id = ?";
+  const updateUserSql = "UPDATE users SET avatar = ?, updated_at = CURRENT_TIMESTAMP WHERE user_id = ?";
   const values = [avatar, user_id];
   db.query(updateUserSql, values, (err, result) => {
     if (err) {
@@ -491,7 +491,7 @@ app.post("/ganti-password", requireAuth, (req, res) => {
             return;
           }
 
-          const updateSql = "UPDATE users SET password = ? WHERE user_id = ?";
+          const updateSql = "UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE user_id = ?";
           const values = [hashedNewPassword, userId];
           db.query(updateSql, values, (err, result) => {
             if (err) {
