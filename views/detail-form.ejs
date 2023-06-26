@@ -1,0 +1,83 @@
+<div class="wrapper-detail-form">
+  <a
+    href="/"
+    class="btn"
+    style="
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #416b8b;
+      color: white;
+    "
+  >
+    &laquo Back
+  </a>
+  <div class="blog-detail">
+    <h1 class="blog-title"><%= form.title %></h1>
+    <div class="blog-meta">
+      <p class="blog-date"><%= moment(form.created_at).format('LL') %></p>
+    </div>
+    <div class="blog-description">
+      <p><%= form.description %></p>
+    </div>
+  </div>
+</div>
+<div class="wrapper-detail-form">
+  <% if (isSubmitted) { %>
+  <p class="submitted-info">
+    Submitted at <%= moment(submission.created_at).format('LL') %>
+  </p>
+  <a
+    href="/download/<%= submission.user_id %>/<%= submission.form_id %>"
+    class="btn-download"
+  >
+    Download file
+  </a>
+
+  <% } else { %>
+  <form
+    action="/upload"
+    method="POST"
+    enctype="multipart/form-data"
+    class="form-upload mt-3"
+    style="padding: 0; margin: 5px"
+  >
+    <div class="mb-3">
+      <input type="hidden" name="user_id" value="<%= user %>" />
+    </div>
+    <div class="mb-3">
+      <input type="hidden" name="form_id" value="<%= form.form_id %>" />
+    </div>
+    <div class="mb-3">
+      <label
+        for="deskripsi"
+        class="form-label"
+        style="font-weight: bold; color: rgb(98, 98, 98)"
+        >Deskripsi</label
+      >
+      <textarea
+        required
+        name="description"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <input
+        required
+        class="form-control"
+        type="file"
+        name="uploaded_file"
+        id="formFile"
+      />
+    </div>
+    <button
+      style="text-decoration: none; background-color: #416b8b; color: #fff"
+      type="submit"
+      class="btn"
+    >
+      Submit
+    </button>
+  </form>
+  <% } %>
+</div>
