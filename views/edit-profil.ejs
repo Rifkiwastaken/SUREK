@@ -1,0 +1,36 @@
+<div class="container-upload">
+  <form
+    action="/edit-profil"
+    method="POST"
+    enctype="multipart/form-data"
+    class="form-upload mt-3"
+    style="padding: 0; margin: 5px"
+  >
+    <div class="mb-3">
+      <label
+        for="Avatar"
+        class="form-label"
+        style="font-weight: bold; color: rgb(98, 98, 98)"
+        >Avatar</label
+      >
+      <input
+        required
+        class="form-control"
+        type="file"
+        name="avatar"
+        accept="image/*"
+        id="formFile"
+      />
+    </div>
+    <button
+      style="text-decoration: none; background-color: #416b8b; color: #fff"
+      type="submit"
+      class="btn"
+    >
+      Save
+    </button>
+    <a href="/profil" class="btn" style="background: #416b8b; color: white">
+      Cancel
+    </a>
+  </form>
+</div>
